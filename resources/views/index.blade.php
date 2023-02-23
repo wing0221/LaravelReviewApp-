@@ -34,8 +34,8 @@
         <li>リンク
             <ul>
                 <li>ログイン</li>
-                <li>レビュー一覧</li>
-                <a href="/item" class="btn btn-default">レビュー対象物一覧</a>
+                <li><a href="/review" class="btn btn-default">レビュー一覧</a></li>
+                <li><a href="/item" class="btn btn-default">レビュー対象物一覧</a></li>
                 <li>レビュー投稿</li>
             </ul>
         </li>

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Http\Requests\ItemRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\ItemRequest;
 use Illuminate\Http\Response;
 
 class ItemController extends Controller

@@ -3,6 +3,7 @@
 use App\Models\Item;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('item', ItemController::class);
-// Route::resource('', ItemController::class);
+Route::resource('review', ReviewController::class);
 
 require __DIR__.'/auth.php';
