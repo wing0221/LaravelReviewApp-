@@ -31,5 +31,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('item', ItemController::class);
+// Route::resource('', ItemController::class);
 
 require __DIR__.'/auth.php';
