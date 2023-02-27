@@ -1,7 +1,7 @@
 <div class="container ops-main">
     <div class="row">
         <div class="col-md-6">
-            <h2>レビュー品登録</h2>
+            <h2>レビューを投稿する</h2>
         </div>
     </div>
     <div class="row">
@@ -19,21 +19,29 @@
             {{-- TODO 画像アップロード可能にする --}}
             {{-- TODO 確認画面を追加 --}}
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{-- TODO ログインUserのIDを自動入力し、hiddenで送信 --}}
+                {{-- TODO リストから選択させる --}}
                 <div class="form-group">
-                    <label for="image">サムネイル</label>
-                    <input type="text" class="form-control" name="image" value="{{ $review->image }}">
+                    <label for="item_id">ユーザー</label>
+                    <input type="text" class="form-control" name="user_id" value="{{ $review->user_id }}">
                 </div>
                 <div class="form-group">
-                    <label for="name">名称</label>
-                    <input type="text" class="form-control" name="name" value="{{ $review->name }}">
+                    <label for="item_id">レビュー品</label>
+                    <input type="text" class="form-control" name="item_id" value="{{ $review->item_id }}">
+                </div>
+                {{-- TODO 五つ星を押して入力するやつにする --}}
+                <div class="form-group">
+                    <label for="evaluation">評価</label>
+                    <input type="text" class="form-control" name="evaluation" value="{{ $review->evaluation }}">
                 </div>
                 <div class="form-group">
-                    <label for="maker">メーカー</label>
-                    <input type="text" class="form-control" name="maker" value="{{ $review->maker }}">
+                    <label for="title">タイトル</label>
+                    <input type="text" class="form-control" name="title" value="{{ $review->title }}">
                 </div>
                 <div class="form-group">
                     <label for="content">詳細</label>
-                    <input type="text" class="form-control" name="content" value="{{ $review->content }}">
+                    {{-- <input type="textarea" class="form-control" name="content" value="{{ $review->content }}"> --}}
+                    <textarea rows="10" type="textarea" class="form-control" name="content" value="{{ $review->content }}"></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">登録</button>
                 <a href="/review">戻る</a>

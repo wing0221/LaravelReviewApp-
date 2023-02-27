@@ -6,7 +6,6 @@
     <h3 class="ops-title">レビュー品一覧</h3>
   </div>
 </div>
-{{-- <img src="{{ asset("storage/item_image/no_image.png") }}"> --}}
 <div class="row">
   <div class="col-md-11 col-md-offset-1">
     <table class="table text-center">

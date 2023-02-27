@@ -6,61 +6,51 @@ use App\Models\Review;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $reviews = Review::all();
-        return view('review/index', compact('reviews'));
+        // レビュー一覧を取得
+        $reviews = DB::table('reviews')
+                 ->join('users', 'users.id', '=', 'reviews.user_id')
+                 ->join('items', 'items.id', '=', 'reviews.item_id')
+                 ->select('reviews.*', 'users.name as user_name', 'items.name as item_name')
+                 ->get();
+        return view('review/index', ['reviews' => $reviews]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): Response
+    public function create()
     {
-        //
+        //新規登録用のクラスをViewに渡す
+        $review = new Review();
+        return view('review/create',compact('review'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        //
-    }
+        $review = new review();
+        $review->user_id = $request->user_id;
+        $review->item_id = $request->item_id;
+        $review->evaluation = $request->evaluation;
+        $review->title = $request->title;
+        $review->content = $request->content;
+        $review->save();
 
-    /**
-     * Display the specified resource.
-     */
+        return redirect('/review');   
+    }
     public function show(string $id): Response
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id): Response
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id): RedirectResponse
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id): RedirectResponse
     {
         //
